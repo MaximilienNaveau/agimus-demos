@@ -19,7 +19,7 @@ def main():
 
         code.interact(local=locals())  # Fallback to standard Python shell
 
-    node.destroy_node()
+    orchestrator.destroy_node()
     rclpy.shutdown()
 
 

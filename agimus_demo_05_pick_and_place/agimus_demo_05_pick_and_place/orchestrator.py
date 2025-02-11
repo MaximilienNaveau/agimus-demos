@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 import numpy as np
 import numpy.typing as npt
+import pinocchio as pin
 
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
@@ -64,7 +65,7 @@ class Orchestrator(object):
         )
         self.trajectory_publisher.publish(trajectory)
 
-    def go_to_ee(self, target_ee):
+    def go_to_ee(self, target_ee: pin.SE3):
         current_robot_state = self.state_client.wait_for_new_state()
         trajectory = self.hpp_client.plan_ee(current_robot_state.position, target_ee)
         self.trajectory_publisher.publish(trajectory)
