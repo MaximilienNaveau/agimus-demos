@@ -17,7 +17,7 @@ class WaitForNonZeroJoints(Node):
     def __init__(self):
         super().__init__("wait_for_non_zero_joints_node")
 
-        self.declare_parameter("timeout", 60.0)
+        self.declare_parameter("timeout", 10.0)
         timeout_dbl = self.get_parameter("timeout").get_parameter_value().double_value
         if timeout_dbl < 0.0:
             e = ParameterException(
